@@ -1,4 +1,4 @@
-import { environment } from './../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,6 +11,6 @@ export class WheatherService {
   constructor(private http: HttpClient) {}
 
   GetAll(): Observable<Iweather[]> {
-    return this.http.get<Iweather[]>(environment.url);
+    return this.http.get<Iweather[]>(environment.url+'/forecast');
   }
 }

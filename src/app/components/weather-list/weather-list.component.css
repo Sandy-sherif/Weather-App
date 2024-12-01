@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+}
+
+.card {
+  display: flex;
+  height: 35%;
+  padding: 2%;
+}
+ul {
+  background-color: blueviolet;
+}

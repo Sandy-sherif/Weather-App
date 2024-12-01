@@ -1,0 +1,13 @@
+
+<div  class="list">
+<div class="card"*ngFor="let weather of weathers">
+  <ul>
+    <li>{{weather.city}}</li>
+    <li>{{weather.forecast[weather.forecast.length-1].date}}</li>
+    <li>{{weather.forecast[weather.forecast.length-1].humidity}}</li>
+    <li>{{weather.forecast[weather.forecast.length-1].temperatureFahrenheit}}</li>
+    <li>{{weather.forecast[weather.forecast.length-1].temperatureCelsius}}</li>
+  </ul>
+
+</div>
+</div>
