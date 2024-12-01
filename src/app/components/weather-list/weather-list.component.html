@@ -1,13 +1,20 @@
-
-<div  class="list">
-<div class="card"*ngFor="let weather of weathers">
-  <ul>
-    <li>{{weather.city}}</li>
-    <li>{{weather.forecast[weather.forecast.length-1].date}}</li>
-    <li>{{weather.forecast[weather.forecast.length-1].humidity}}</li>
-    <li>{{weather.forecast[weather.forecast.length-1].temperatureFahrenheit}}</li>
-    <li>{{weather.forecast[weather.forecast.length-1].temperatureCelsius}}</li>
-  </ul>
-
-</div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12 col-sm-4 col-md-3 col-lg-3 mb-3" *ngFor="let weather of weathers">
+      <div class="card h-100" style="font-size: 0.9rem;">
+        <img class="card-img-top" src="./sun.png" alt="sun" />
+        <div class="card-body">
+          <h6 class="card-title">{{ weather.city }}</h6>
+          <p class="card-text">{{ weather.forecast[weather.forecast.length - 1].date }}
+          </p>
+          <p class="card-text">Humidity: {{ weather.forecast[weather.forecast.length - 1].humidity }} %
+          </p>
+          <p class="card-text">Temp: {{weather.forecast[weather.forecast.length - 1].temperatureFahrenheit}} °F
+          </p>
+          <p class="card-text">Temp: {{weather.forecast[weather.forecast.length - 1].temperatureCelsius}} °C
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
