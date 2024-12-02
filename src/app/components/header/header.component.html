@@ -1,1 +1,33 @@
-<p>header works!</p>
+<div class="sticky-header">
+  <div class="row align-items-center mb-3">
+    <div class="col-12 col-md-6 mb-2 mb-md-0 align-items-center d-flex">
+      <h2 class="text-center text-md-start title">Weather App</h2>
+      <div class="form-check form-switch ms-2">
+        <input
+          (change)="toggleUnit()"
+          class="form-check-input custom-check"
+          type="checkbox"
+          id="unitToggle"
+          name="toggle"
+        />
+        <label class="form-check-label ms-1" for="unitToggle">
+          {{ isCelsius ? "Fahrenheit" : "Celsius" }}
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <form class="d-flex flex-column flex-md-row gap-2">
+        <input
+          type="text"
+          class="form-control w-50 ms-auto"
+          placeholder="🔍City name"
+          name="city"
+          [(ngModel)]="cityName"
+        />
+        <button type="submit" class="btn btn-color" (click)="SearchByCity()">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

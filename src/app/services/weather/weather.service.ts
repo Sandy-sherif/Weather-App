@@ -1,16 +1,29 @@
+import { Iweather } from './../../models/iweather';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Iweather } from '../../models/iweather';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WheatherService {
+export class WeatherService {
+  cities: Iweather[] = {} as Iweather[];
+
+  private temperatureUnitSource = new BehaviorSubject<boolean>(true);
+  temperatureUnitObs = this.temperatureUnitSource.asObservable();
+
   constructor(private http: HttpClient) {}
 
   GetAll(): Observable<Iweather[]> {
-    return this.http.get<Iweather[]>(environment.url+'/forecast');
+    return this.http.get<Iweather[]>(environment.url + '/forecast');
+  }
+
+  GetCityById(cityId: number): Observable<Iweather> {
+    return this.http.get<Iweather>(environment.url + '/cityForecast/' + cityId);
+  }
+
+  changeTempUnit(isCelsius: boolean) {
+    this.temperatureUnitSource.next(isCelsius);
   }
 }

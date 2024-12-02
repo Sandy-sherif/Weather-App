@@ -1,0 +1,27 @@
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f3e5f5;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.title{
+  color: #d76ce7;
+}
+.custom-check{
+  width: 50px;
+  height: 20px;
+}
+.custom-check:checked,.custom-check:hover,.btn-color{
+  background-color: #d76ce7;
+}
+.custom-check:focus{
+  box-shadow: 0 4px 6px rgba(215, 108, 231, 0.5);
+}
+.custom-input {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+

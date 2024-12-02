@@ -1,19 +1,60 @@
-<div class="container mt-4">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-12 col-sm-4 col-md-3 col-lg-3 mb-3" *ngFor="let weather of weathers">
-      <div class="card h-100" style="font-size: 0.9rem;">
-        <img class="card-img-top" src="./sun.png" alt="sun" />
-        <div class="card-body">
-          <h6 class="card-title">{{ weather.city }}</h6>
-          <p class="card-text">{{ weather.forecast[weather.forecast.length - 1].date }}
-          </p>
-          <p class="card-text">Humidity: {{ weather.forecast[weather.forecast.length - 1].humidity }} %
-          </p>
-          <p class="card-text">Temp: {{weather.forecast[weather.forecast.length - 1].temperatureFahrenheit}} °F
-          </p>
-          <p class="card-text">Temp: {{weather.forecast[weather.forecast.length - 1].temperatureCelsius}} °C
-          </p>
+    <div class="col-md-3" *ngFor="let weather of filteredWeathers">
+      <div class="weather-card" (click)="NavigateToCity(weather.id)">
+        <h2>{{ weather.city }}</h2>
+        <div
+          [ngSwitch]="
+            getWeather(
+              weather.forecast[weather.forecast.length - 1].temperatureCelsius
+            )
+          "
+        >
+          <p *ngSwitchCase="1">Sunny</p>
+          <p *ngSwitchCase="2">Cloudy</p>
+          <p *ngSwitchCase="3">Rainy</p>
         </div>
+        <div
+          class="weather-icon"
+          [ngSwitch]="
+            getWeather(
+              weather.forecast[weather.forecast.length - 1].temperatureCelsius
+            )
+          "
+        >
+          <p *ngSwitchCase="1">☀️</p>
+          <p *ngSwitchCase="2">☁️</p>
+          <p *ngSwitchCase="3">🌧️</p>
+        </div>
+        <h1>
+          {{
+            isCelsius
+              ? weather.forecast[weather.forecast.length - 1]
+                  .temperatureCelsius + "°C"
+              : weather.forecast[weather.forecast.length - 1]
+                  .temperatureFahrenheit + "°F"
+          }}
+        </h1>
+        <p>Humidity :</p>
+        <div class="justify-content-center row">
+          <div
+            class="circle"
+            [style.background]="
+              getCircleStyle(
+                weather.forecast[weather.forecast.length - 1].humidity
+              )
+            "
+          >
+            <div class="inner-circle">
+              <span>
+                {{
+                  weather.forecast[weather.forecast.length - 1].humidity
+                }}%</span
+              >
+            </div>
+          </div>
+        </div>
+        <p>{{ weather.forecast[weather.forecast.length - 1].date }}</p>
       </div>
     </div>
   </div>
